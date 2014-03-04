@@ -33,6 +33,14 @@ class ShipApp < Sinatra::Base
     { request_id: request_id, summary: "Shipment #{shipment} was updated" }.to_json
   end
   
+  post "/get_picked_up" do
+    content_type :json
+    request_id = payload[:request_id]
+
+    shipments = Service.new(payload).picked_up
+    { request_id: request_id, shipments: shipments }.to_json
+  end
+
   # Custom webhook
   post "/cancel_shipment" do
     content_type :json
@@ -58,6 +66,15 @@ class Service
         "status" => "shipped",
         "tracking" => "12345678"
       }
+    ]
+  end
+
+  # Talk to you shipment api, e.g.
+  #   FedEx.get_picked_up payload
+  def picked_up
+    [
+      { "id" => "12836", "status" => "picked_up", "picked_up_at" => "2014-02-03T17:29:15.219Z" },
+      { "id" => "13243", "status" => "picked_up", "picked_up_at" => "2014-02-03T17:03:15.219Z" }
     ]
   end
 
