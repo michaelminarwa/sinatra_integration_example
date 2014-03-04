@@ -69,7 +69,7 @@ class Service
     ]
   end
 
-  # Talk to you shipment api, e.g.
+  # Talk to your shipment api, e.g.
   #   FedEx.get_picked_up payload
   def picked_up
     [
@@ -78,19 +78,19 @@ class Service
     ]
   end
 
-  # Talk to you shipment api making, e.g.
+  # Talk to your shipment api, e.g.
   #   FedEx.create_shipment payload
   def create
     payload[:shipment][:id]
   end
 
-  # Talk to you shipment api making, e.g.
+  # Talk to your shipment api, e.g.
   #   FedEx.create_shipment payload
   def update
     payload[:shipment][:id]
   end
 
-  # Talk to you shipment api making, e.g.
+  # Talk to your shipment api, e.g.
   #   FedEx.cancel_shipment payload
   def cancel
     payload[:shipment][:id]
